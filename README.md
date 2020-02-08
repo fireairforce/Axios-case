@@ -12,6 +12,10 @@ npm run commit
 npm run dev
 ```
 
+## demo 说明
+
+对应的`demo`位于`examples`文件夹下面的各个文件夹里面，`app.ts`为入口文件，`index.html`则为渲染页面(它们都会通过`webpack`的配置打包出来)。具体`webpack`配置参考`webpack.config.js`文件，同时使用`express`来搭建项目运行的服务器端。运行起来之后可以去到对应的`demo`里面查看`axios`请求的结果
+
 ## 对 url 参数的处理
 
 - 参数值为数组

@@ -79,6 +79,7 @@ function registerSimpleRouter() {
   })
 }
 
+// 这种url拼接参数，传递什么参数即返回什么参数
 function registerBaseRouter() {
   router.get('/base/get', function(req, res) {
     res.json(req.query)
