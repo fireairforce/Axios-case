@@ -1,5 +1,5 @@
 import { AxiosRequestConfig } from './types/index'
-import xhr from './xhr'
+import { xhr } from './xhr'
 import { buildURL } from './helpers/url'
 import { transformRequest } from './helpers/data'
 import { processHeaders } from './helpers/headers'
@@ -20,13 +20,13 @@ function processConfig(config: AxiosRequestConfig): void {
 }
 
 // 处理配置文件里面的url
-function transformURL(config: AxiosRequestConfig): string {
+const transformURL = (config: AxiosRequestConfig): string => {
   const { url, params } = config
   return buildURL(url, params)
 }
 
 // 把req里面的body数据转换成obj
-function transformReqData(config: AxiosRequestConfig): any {
+const transformReqData = (config: AxiosRequestConfig): any => {
   return transformRequest(config.data)
 }
 

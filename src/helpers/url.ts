@@ -1,7 +1,7 @@
 import { isDate, isPlainObject } from './util'
 
 // 对字符串进行转码&处理特殊字符
-function encode(val: string): string {
+const encode = (val: string): string => {
   return encodeURIComponent(val)
     .replace(/%40/g, '@')
     .replace(/%3A/gi, ':')
@@ -12,7 +12,7 @@ function encode(val: string): string {
     .replace(/%5D/gi, ']')
 }
 
-export function buildURL(url: string, params?: any): string {
+export const buildURL = (url: string, params?: any): string => {
   if (!params) {
     return url
   }
