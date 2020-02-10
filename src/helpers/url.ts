@@ -1,4 +1,4 @@
-import { isDate, isObject } from './util'
+import { isDate, isPlainObject } from './util'
 
 // 对字符串进行转码&处理特殊字符
 function encode(val: string): string {
@@ -33,7 +33,7 @@ export function buildURL(url: string, params?: any): string {
     values.forEach(val => {
       if (isDate(val)) {
         val = val.toISOString()
-      } else if (isObject(val)) {
+      } else if (isPlainObject(val)) {
         // encode成json字符串
         val = JSON.stringify(val)
       }
