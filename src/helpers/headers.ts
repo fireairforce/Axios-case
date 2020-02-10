@@ -24,3 +24,24 @@ export const processHeaders = (headers: any, data: any): any => {
   }
   return headers
 }
+
+export const parseHeaders = (headers: string): any => {
+  let parsed = Object.create(null)
+  if (!headers) {
+    return parsed
+  }
+  headers.split(`\r\n`).forEach(line => {
+    let [key, val] = line.split(':')
+    // trim作用是去除掉字符串头尾空格
+    key = key.trim().toLowerCase()
+    if (!key) {
+      // 如果是空串就进下一次循环
+      return
+    }
+    if (val) {
+      val = val.trim()
+    }
+    parsed[key] = val
+  })
+  return parsed
+}

@@ -1,4 +1,5 @@
 import { AxiosRequestConfig, AxiosPromise, AxiosReponse } from './types/index'
+import { parseHeaders } from './helpers/headers'
 
 export const xhr = (config: AxiosRequestConfig): AxiosPromise => {
   return new Promise(resolve => {
@@ -19,8 +20,8 @@ export const xhr = (config: AxiosRequestConfig): AxiosPromise => {
       if (request.readyState !== 4) {
         return
       }
-
-      const responseHeader = request.getAllResponseHeaders()
+      //  这个方法取到的值会是字符串
+      const responseHeader = parseHeaders(request.getAllResponseHeaders())
       // 根据responseType属性根据返回结果的值
       const responseData = responseType !== 'text' ? request.response : request.responseText
       const response: AxiosReponse = {
