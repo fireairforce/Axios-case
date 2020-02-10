@@ -23,6 +23,7 @@ export interface AxiosRequestConfig {
   headers?: any
   // typescript内部dom自带的一个类型，可以点进去康康
   responseType?: XMLHttpRequestResponseType
+  timeout?: number
 }
 
 export interface AxiosReponse {
