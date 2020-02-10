@@ -69,3 +69,14 @@ params: {
 ## 对 body 数据处理
 
 ## 对请求头 req-headers 处理
+
+## 返回结果 Promise 化
+
+同时`.then`函数返回的对象包括:
+
+- 服务端的数据`data`
+- `HTTP`状态码`status`
+- 状态消息 Status
+- 响应头 headers
+- 请求配置对象 config
+- 请求 XMLHttpRequest 对象实例 request

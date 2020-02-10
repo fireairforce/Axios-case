@@ -14,11 +14,12 @@ const normalizeHeaderName = (headers: any, normalizedName: string): any => {
 }
 
 export const processHeaders = (headers: any, data: any): any => {
+  // 先对content-type做个格式化
   normalizeHeaderName(headers, 'Content-Type')
 
   if (isPlainObject(data)) {
     if (headers && !headers['Content-Type']) {
-      headers['Content-Type'] = 'application/json;charset=UTF-8'
+      headers['Content-Type'] = 'application/json;charset=utf-8'
     }
   }
   return headers
