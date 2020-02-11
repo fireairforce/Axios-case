@@ -26,7 +26,7 @@ export interface AxiosRequestConfig {
   timeout?: number
 }
 
-export interface AxiosReponse {
+export interface AxiosResponse {
   data: any
   status: number
   statusText: string
@@ -37,4 +37,11 @@ export interface AxiosReponse {
 }
 
 // axios函数返回的对象类型(promise对象),继承自Promise的泛型接口
-export interface AxiosPromise extends Promise<AxiosReponse> {}
+export interface AxiosPromise extends Promise<AxiosResponse> {}
+
+export interface AxiosError extends Error {
+  config: AxiosRequestConfig
+  code?: string | null
+  request?: any
+  response?: AxiosResponse
+}

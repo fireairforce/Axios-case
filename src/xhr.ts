@@ -1,4 +1,4 @@
-import { AxiosRequestConfig, AxiosPromise, AxiosReponse } from './types/index'
+import { AxiosRequestConfig, AxiosPromise, AxiosResponse } from './types/index'
 import { parseHeaders } from './helpers/headers'
 
 export const xhr = (config: AxiosRequestConfig): AxiosPromise => {
@@ -34,7 +34,7 @@ export const xhr = (config: AxiosRequestConfig): AxiosPromise => {
       const responseHeader = parseHeaders(request.getAllResponseHeaders())
       // 根据responseType属性根据返回结果的值
       const responseData = responseType !== 'text' ? request.response : request.responseText
-      const response: AxiosReponse = {
+      const response: AxiosResponse = {
         data: responseData,
         status: request.status,
         statusText: request.statusText,
@@ -65,7 +65,7 @@ export const xhr = (config: AxiosRequestConfig): AxiosPromise => {
 
     request.send(data)
 
-    const handleResponse = (response: AxiosReponse): void => {
+    const handleResponse = (response: AxiosResponse): void => {
       if (response.status >= 200 && response.status < 300) {
         resolve(response)
       } else {
