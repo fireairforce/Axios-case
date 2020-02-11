@@ -1,4 +1,4 @@
-import axios from '../../src/index'
+import axios, { AxiosError } from '../../src/index'
 
 // 故意写错url
 axios({
@@ -43,7 +43,7 @@ axios({
   .then(res => {
     console.log(res)
   })
-  .catch(e => {
+  .catch((e:AxiosError) => {
     console.log(e.message)
     console.log(e.config)
     console.log(e.code)
