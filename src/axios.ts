@@ -1,13 +1,15 @@
-import { AxiosRequestConfig, AxiosPromise } from './types/index'
+import { AxiosRequestConfig, AxiosPromise, AxiosResponse } from './types/index'
 import { xhr } from './xhr'
 import { buildURL } from './helpers/url'
-import { transformRequest } from './helpers/data'
+import { transformRequest, transformResponse } from './helpers/data'
 import { processHeaders } from './helpers/headers'
 
 const axios = (config: AxiosRequestConfig): AxiosPromise => {
   // 处理配置文件
   processConfig(config)
-  return xhr(config)
+  return xhr(config).then(res => {
+    return transformResponseData(res)
+  })
 }
 
 const processConfig = (config: AxiosRequestConfig): void => {
@@ -34,6 +36,11 @@ const transformReqData = (config: AxiosRequestConfig): any => {
 const transformHeaders = (config: AxiosRequestConfig): any => {
   const { headers = {}, data } = config
   return processHeaders(headers, data)
+}
+
+const transformResponseData = (res: AxiosResponse): AxiosResponse => {
+  res.data = transformResponse(res.data)
+  return res
 }
 
 export default axios
