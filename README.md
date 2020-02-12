@@ -80,3 +80,9 @@ params: {
 - 响应头 headers
 - 请求配置对象 config
 - 请求 XMLHttpRequest 对象实例 request
+
+## 对axios的一系列方法封装
+`core`目录下面的`Axios`类里面已经封装好了`Axios`需要的各种方法,例如`get`,`post`,`delete`等等。
+
+## 混合对象的实现
+用来将我们的Axios对象与原声的Axios对象合并起来，利用了交叉类型和类型断言实现了一个`extend`函数(用于将`from`里面的属性都拓展到`to`里面去)。

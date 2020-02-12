@@ -1,4 +1,4 @@
-import axios from './axios'
+import axios from '../src/core/Axios'
 
 // 把types里面的类型全部导出出去给外部的变量使用
 export * from './types'

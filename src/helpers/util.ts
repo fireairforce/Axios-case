@@ -16,3 +16,11 @@ export const isPlainObject = (val: any): val is Object => {
 // export function isObject(val: any): val is Object {
 //   return val !== null && typeof val === 'object'
 // }
+
+// 使用交叉类型来实现，这里使用了泛型的概念其中to为T,from为U,拷贝出来的类型为T和U类型的并集
+export function extend<T, U>(to: T, from: U): T & U {
+  for (const key in from) {
+    ;(to as T & U)[key] = from[key] as any
+  }
+  return to as T & U
+}
