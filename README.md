@@ -81,10 +81,24 @@ params: {
 - 请求配置对象 config
 - 请求 XMLHttpRequest 对象实例 request
 
-## 对axios的一系列方法封装
+## 对 axios 的一系列方法封装
+
 `core`目录下面的`Axios`类里面已经封装好了`Axios`需要的各种方法,例如`get`,`post`,`delete`等等。
 
 ## 混合对象的实现
-用来将我们的Axios对象与原声的Axios对象合并起来，利用了交叉类型和类型断言实现了一个`extend`函数(用于将`from`里面的属性都拓展到`to`里面去)。
+
+用来将我们的 Axios 对象与原声的 Axios 对象合并起来，利用了交叉类型和类型断言实现了一个`extend`函数(用于将`from`里面的属性都拓展到`to`里面去)。
 
 然后在根目录下面的`axios.ts`中实现即可。
+
+这样可以将我们的`Axios`变成一个混合类型的对象,相关的`demo`可以在`extend`目录中看见。
+
+同时利用重载实现了一个两种方式组合请求的`feature`
+
+### axios函数重载
+支持多个参数的传入
+```js
+axios('xxx/xxx',{
+  method:'get'
+})
+```
