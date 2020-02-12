@@ -1,6 +1,6 @@
-import { AxiosRequestConfig, AxiosPromise, AxiosResponse } from './types/index'
-import { parseHeaders } from './helpers/headers'
-import { createError } from './helpers/error'
+import { AxiosRequestConfig, AxiosPromise, AxiosResponse } from '../types/index'
+import { parseHeaders } from '../helpers/headers'
+import { createError } from '../helpers/error'
 
 export const xhr = (config: AxiosRequestConfig): AxiosPromise => {
   return new Promise((resolve, reject) => {
@@ -17,7 +17,8 @@ export const xhr = (config: AxiosRequestConfig): AxiosPromise => {
     }
 
     //   第三个参数为true表示为异步(false为同步),method规定大写
-    request.open(method.toUpperCase(), url, true)
+    // 这里同样用类型断言断言url这里不为空
+    request.open(method.toUpperCase(), url!, true)
 
     // 实现onreadystateChange逻辑
     request.onreadystatechange = () => {
