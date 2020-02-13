@@ -95,14 +95,28 @@ params: {
 
 同时利用重载实现了一个两种方式组合请求的`feature`
 
-### axios函数重载
+### axios 函数重载
+
 支持多个参数的传入
+
 ```js
-axios('xxx/xxx',{
-  method:'get'
+axios('xxx/xxx', {
+  method: 'get'
 })
 ```
+
 这里只对`axios`内部的一个`request`函数进行修改,而不必对它的类型进行一个修改。
 
 ## 响应数据支持泛型
-把后端返回的数据放在一个泛型接口里面。
+
+把后端返回的数据放在一个接口里面，这个接口支持泛型 T。
+
+```js
+export interface ResponseData<T = any> {
+  code: number;
+  result: T;// 这个结果支持泛型接口
+  message: string;
+}
+```
+
+我们也可以把`api`抽离成单独的模块
