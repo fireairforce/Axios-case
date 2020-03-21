@@ -119,4 +119,4 @@ export interface ResponseData<T = any> {
 }
 ```
 
-我们也可以把`api`抽离成单独的模块
+我们也可以把`api`抽离成单独的模块.
